@@ -22,51 +22,74 @@ WEB камере на этом компе и при поднесении QR ко
 * https://webqr.com/contact.html
 
 
+## Детали реализации
+
+Библиотеки выкачиваются из публично доступного хранилища библиотек - https://unpkg.com:
+* библиотека расшифровки QR-кодов https://www.npmjs.com/package/html5-qrcode
+* библиотека отображения сообщений пользователю https://www.npmjs.com/package/sweetalert2
+* библиотека верстки https://getbootstrap.com/docs/4.6/
+
+
+## Запуск
+
+Т.к. библиотеки выкыачиваются извне, то достаточно просто открыть страницу в браузере, или настроить любой web-сервер
+для отдачи ее, как статичного содержимого.
+
+Для удобства можно пользоваться `docker-compose.yaml` файлом:
+* установить docker. https://www.docker.com
+* установить docker-compose. https://docs.docker.com/compose/
+* выполнить `docker-compose up` в корневой папке проекта
+
+Приложение будет развернуто на порту 8000, он указан в `docker-compose.yaml` файле. Будет слушать интерфейс 0.0.0.0.
+ 
+
+# Заметки
+
 ## Ссылки на рассмотренные библиотеки/инструменты для распознания QA кодов
 
 * https://www.npmjs.com/package/html5-qrcode
     * https://github.com/mebjas/html5-qrcode
     * https://blog.minhazav.dev/research/html5-qrcode#scan-using-file
     * https://minhazav.medium.com/qr-code-scanner-using-html-and-javascript-3895a0c110cd
-    * **RESULT** - chosen. Works out-of-the-box, API is clean and convenient
+    * **РЕЗУЛЬТАТ** - chosen. Works out-of-the-box, API is clean and convenient
 
 * https://www.npmjs.com/package/@zxing/library
     * https://github.com/zxing-js/library
-    * **RESULT** - skipped
+    * **РЕЗУЛЬТАТ** - не рассматривали
 
 * https://www.npmjs.com/package/jsqr
     * https://github.com/cozmo/jsQR
-    * **RESULT** - skipped
+    * **РЕЗУЛЬТАТ** - не рассматривали
 
 * https://www.npmjs.com/package/instascan
     * https://www.js-tutorials.com/javascript-tutorial/how-to-scan-qr-reader-using-javascript-and-html5/
     * https://www.youtube.com/watch?v=hJAY4JUPxus
     * https://pretagteam.com/question/read-qrcode-from-a-web-page-with-camera
-    * **RESULT** - skipped
+    * **РЕЗУЛЬТАТ** - не рассматривали
 
 * https://www.npmjs.com/package/qr-scanner
     * https://github.com/nimiq/qr-scanner
     * (based on cozmo/jsQR and ZXing)
-    * **RESULT** - skipped
+    * **РЕЗУЛЬТАТ** - не рассматривали
 
 * https://github.com/LazarSoft/jsqrcode
     * (This is a port of ZXing qrcode scanner)
     * https://webqr.com/index.html
     * https://gist.github.com/bobvanderlinden/a58f39e44dba53e17cd2e2ec4774af08
     * https://searchcode.com/codesearch/view/66607988/
-    * **RESULT** - declined. It is server-side library
+    * **РЕЗУЛЬТАТ** - не стали использовать. это библиотека для серверных приложений
 
 * https://www.npmjs.com/package/qrcode
-    * **RESULT** - declined, it is server-side library
+    * **РЕЗУЛЬТАТ** - не стали использовать. это библиотека для серверных приложений
 
 * https://www.npmjs.com/package/web-qr
-    * **RESULT** - declined, because not supported 
+    * **РЕЗУЛЬТАТ** -  не стали использовать, т.к. не поддерживается ее разработчиком
 
 * https://www.npmjs.com/package/jsqrcode
-    * **RESULT** - declined, because not supported 
+    * **РЕЗУЛЬТАТ** -  не стали использовать, т.к. не поддерживается ее разработчиком
 
 * https://www.npmjs.com/package/@lostinbrittany/jsqrcode
-    * **RESULT** - declined, this is a port of "LazarSoft/jsqrcode". Not supported
+    * **РЕЗУЛЬТАТ** -  не стали использовать, основана на "LazarSoft/jsqrcode". не поддерживается ее разработчиком
 
 
 ## Папка "examples"
