@@ -18,14 +18,16 @@
             height: 100%;
         }
 
-        /*.qr-box .qr-row.qr-header {*/
-        /*    flex-grow: 0;*/
-        /*    flex-shrink: 1;*/
-        /*    flex-basis: auto;*/
-        /*    align-items: center;*/
-        /*    justify-content: center;*/
-        /*}*/
-        /**/
+        .qr-box .qr-row.qr-header {
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-flow: row;
+        }
+
         .qr-box .qr-row.qr-content {
             flex-grow: 1;
             flex-shrink: 1;
@@ -42,6 +44,9 @@
 <div class="qr-box">
     <div class="qr-row qr-header">
         <div id="reader" style="width: 350px"></div>
+    </div>
+    <div class="qr-row qr-header">
+        <span id="qr-current-url">Данные QR кода: нет.</span>
     </div>
     <div class="embed-responsive qr-row qr-content">
         <iframe class="embed-responsive-item" id="qr-gosuslugi-preview" src="" frameborder="0"></iframe>
@@ -69,9 +74,9 @@
             });
 
             clearTimeout(currentClean);
-            document.getElementById("qr-gosuslugi-preview").src = decodedText;
+            showGosUslugi(decodedText);
             currentClean = setTimeout(function () {
-                document.getElementById("qr-gosuslugi-preview").src = "";
+                showGosUslugi("");
             }, 10000);
             return;
         }
@@ -89,6 +94,11 @@
 
     function inactiveHandling() {
         // nothing to do
+    }
+
+    function showGosUslugi(url) {
+        document.getElementById("qr-gosuslugi-preview").src = url;
+        document.getElementById("qr-current-url").textContent = `Данные QR кода: ${url || "нет"}.`;
     }
 
     function isGosUslugiUrl(text) {
